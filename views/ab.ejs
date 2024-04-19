@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbreviations Quiz</title>
+    <link rel="stylesheet" href="/styles/ab.css">
+</head>
+<body id="soul">
+  <form class="container" action="/submit" method="post">
+    <div class="totalScore">
+      <h3 class="total">TotalScore:</h3>
+      <span id="score">
+        <%= locals.totalScore ? totalScore :"0" %>
+      </span>
+    </div>
+    <h1 id="question">
+      <%=question.ab%>
+    </h1>
+    <div class="answer-container">
+      <input type="text" name="answer" id="userInput" placeholder="Type the abbreviated form" autofocus autocomplete="off">
+    </div>
+    <button type="submit">SUBMIT<% if(locals.wasCorrect){ %>
+      <span class="checkmark">✔</span>
+      <% } else if (locals.wasCorrect===false) { %>
+        <span class="cross" id="error">✖</span>
+        <% } %>
+    </button>
+
+
+
+  </form>
+
+  <script>
+    var wasCorrect = "<%=locals.wasCorrect%>";
+    console.log(wasCorrect)
+    if (isCorrect === "false") {
+      alert('Game over! Final best score: <%= locals.totalScore %>');
+      document.getElementById("soul").innerHTML = '<a href="/" class="restart-button">Restart</a>'
+    }
+
+  </script>
+</body>
+
+
+</html>
+
